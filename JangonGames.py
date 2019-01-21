@@ -1,16 +1,24 @@
+# This is a Python Based Text Game called, "The Champion of Jangon Jungle". 
+# A Player starts playing the game by entering his name credentials and consent to play.
+# The game takes the player through a series of text based quests and the performance of the player is determined based on his choices.
+# There are 5 playing arenas in this game Meadow, Muck, Mines, Falls and Mangroves.
+# There is a dimension called Crossroads that is the key arena choosing point.
+# Wrong Choices, Losing Combats, Energy Deprecation all lead to Death of the player and results in Game Over.
+# Trailing Program Code
 import time
 import matplotlib.pyplot as plt
 import matplotlib.path as mpath
 import numpy as np
-energy = 50
-moves = 0
-EnergyStats = []
-Moves_Record=[]
-Items = ["Lighter"]
-arena = []
+
+energy = 50             # variable that computes and stores player energy
+moves = 0               # variable that counts nover of times the player moves
+EnergyStats = []        # A list with energy status with every move(numeric)
+Moves_Record=[]         # A list with description of every move
+Items = ["Lighter"]     # A list of objects player has with him for survival needs
+arena = []              # A list with arena status change with every move
 
 
-def game():  # Enter game
+def game():  # Enter game and setup with player credentials and feel of scenario of game
     global moves
     print("~~~~~~~~~~~~~~~~~~~~~~~~")
     print(" THE JANGON CHAMPION")
@@ -30,7 +38,7 @@ def game():  # Enter game
         game_over(EnergyStats, Items, arena)
 
 
-def jangon(arena, Moves_Record):
+def jangon(arena, Moves_Record):    #Fuction for entering Jangon Jungle arena
     global moves
     arena.append('Jangon Jungle')
     moves = moves+1
@@ -86,7 +94,7 @@ def jangon(arena, Moves_Record):
       meadow(Moves_Record,EnergyStats, Items, arena)
 
 
-def falls(Moves_Record,EnergyStats, Items , arena):
+def falls(Moves_Record,EnergyStats, Items , arena): #Function to enter Falls Arena
     global moves
     global energy
     moves=moves+1
@@ -136,7 +144,7 @@ def falls(Moves_Record,EnergyStats, Items , arena):
     crossroads(Moves_Record)    #Return to make more choices, wander between arenas
 
 
-def crossroads(Moves_Record):
+def crossroads(Moves_Record):   #Function to enter Crossroads
     global moves
     moves = moves+1
     arena.append("Crossroads")
@@ -167,7 +175,7 @@ def crossroads(Moves_Record):
         flag = 1
 
 
-def mines(Moves_Record,EnergyStats, Items , arena):
+def mines(Moves_Record,EnergyStats, Items , arena): #Function to enter Mines Arena
     global moves
     global energy
     moves = moves+1
@@ -221,7 +229,7 @@ def mines(Moves_Record,EnergyStats, Items , arena):
         crossroads(Moves_Record)
 
 
-def meadow(Moves_Record,EnergyStats, Items , arena):
+def meadow(Moves_Record,EnergyStats, Items , arena):    #Function to enter Meadow Arena
   global moves
   global energy
   moves= moves+1
@@ -247,7 +255,7 @@ def meadow(Moves_Record,EnergyStats, Items , arena):
        crossroads(Moves_Record)
 
 
-def muck(Moves_Record,EnergyStats, Items, arena):
+def muck(Moves_Record,EnergyStats, Items, arena):   #Function to enter Muck Arena
   global moves
   global energy
   moves=moves+1
@@ -283,7 +291,7 @@ def muck(Moves_Record,EnergyStats, Items, arena):
        scorpion_attack(Moves_Record,EnergyStats, Items , arena)
 
 
-def mangrove(Moves_Record,EnergyStats, Items , arena):
+def mangrove(Moves_Record,EnergyStats, Items , arena):  #Function to enter Mangrove Arena
   global moves
   global energy
   moves=moves+1
@@ -316,7 +324,7 @@ def mangrove(Moves_Record,EnergyStats, Items , arena):
       game_over(EnergyStats, Items, arena)
 
 
-def scorpion_attack(Moves_Record,EnergyStats, Items , arena):
+def scorpion_attack(Moves_Record,EnergyStats, Items , arena):   #Function to encounter scorpion
     global moves
     global energy
     moves=moves+1
@@ -369,7 +377,7 @@ def scorpion_attack(Moves_Record,EnergyStats, Items , arena):
 
 
 
-def game_over(EnergyStats, Items , arena):
+def game_over(EnergyStats, Items , arena):  #Function to project game over and show statistics
     time.sleep(4)
     print("Game Over")
     time.sleep(4)
@@ -423,4 +431,4 @@ def energy_check(energy):   #Check if energy drops below or equal to zero. Game 
         game_over(EnergyStats, Items, arena)
 
 
-game()
+game()  #Function call to begin game
